@@ -3,6 +3,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const buildPath = path.resolve(__dirname, 'dist');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
 
@@ -31,9 +33,16 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-            presets: ['@babel/preset-env']
+          presets: ['@babel/preset-env']
         }
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader"
+        ]
+      }      
     ]
   },
 
@@ -52,6 +61,10 @@ module.exports = {
       chunks: ['signin'],
       filename: 'signin.html'
     }),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
+      chunkFilename: "[id].[contenthash].css"
+    })    
   ],
 
   // https://webpack.js.org/configuration/optimization/
@@ -62,6 +75,7 @@ module.exports = {
         parallel: true,
         sourceMap: true
       }),
+      new OptimizeCssAssetsPlugin({})
     ]
   }
 };
