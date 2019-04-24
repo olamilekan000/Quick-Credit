@@ -1,4 +1,203 @@
-body {
-	color: green;
-	background-color: yellow;
+html, body {
+	height: 100vh;
 }
+
+body{
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Roboto', sans-serif;
+	background-color: #fff;
+	display: block;
+}
+
+header, footer{
+	background-color: #141D26;
+	margin: 0px;
+}
+
+header{
+	margin: 0px;
+	min-height: 10vh;
+}
+
+header .container{
+	display: flex;
+	justify-content: space-between;
+}
+
+footer{
+	margin-bottom: 0px;
+	min-height: 0px;
+	padding: 20px;
+}
+
+footer > h6 {
+	text-align: center;
+	color: #fff;
+	font-size: 0.8em;
+}
+
+main{
+	min-height: 500px;
+}
+
+form input{
+	margin-top: 15px;
+}
+
+form{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    padding: 35px;
+    background-color: #fff;
+    width: 50%;
+    margin: auto;
+}
+
+form div.center {
+	text-align: center;
+}
+
+ul li{
+	list-style: none;
+	display: inline-block;
+}
+
+span a{
+	margin-top: 20px;
+	font-size: 15px;
+	color: #000;
+}
+
+
+/*class*/
+
+.container{
+	margin: auto;
+	width: 80%;
+	padding: 10px;
+}
+
+.center{
+	margin: auto;
+	padding: 15px;
+	width: 100%;
+}
+
+.center button {
+	margin-top: 15px;
+}
+
+.input-field{
+	width: 100%;
+	border: none;
+	padding: 7px;
+}
+
+.logo{
+	font-size: 2rem;
+}
+
+.btn{
+	padding: 10px;
+	width: 5rem;
+	border: none;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+	background-color: #141D26 /*#2e7d32*/;
+	color:#fff;
+	cursor: pointer;
+}
+
+.btn:hover{
+	background-color: #141D26;
+	transition: all 0.4s ease;
+}
+
+.btn:focus{
+	outline: 0;
+}
+
+.input-field{
+	padding-left: 10px;
+	border: none;
+	border-bottom: 1px solid #000;
+}
+
+.input-field[type=email]:focus,
+.input-field[type=password]:focus {
+	border: none;
+	outline: none;
+	border-bottom: 0.5px solid #141D26;
+	box-shadow: 0 1px 0 0 #141D26;
+	transition: all 1s ease;
+}
+
+.card{
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+	padding: 20px;
+	display: block;
+	background-color: #fff;
+}
+
+.card span{
+	font-size: 18px;
+}
+
+.logo {
+	font-family: 'Pacifico', cursive;
+	color: #fff;
+}
+
+
+/*id*/
+
+#signInText {
+	text-align: center;
+	font-family: 'Pacifico', cursive;
+	margin-top: 3%;
+	color: #fff;
+	font-size: 1.9em;
+}
+
+#errEmail, #errPwd {
+	color: red;
+	display: none;
+	transition: all 1s ease-in;
+    margin-bottom: 0px;	
+}
+
+#formBackground {
+  	animation: colorchange 50s infinite; /* animation-name followed by duration in seconds*/
+     /* you could also use milliseconds (ms) or something like 2.5s */
+  	-webkit-animation: colorchange 50s infinite; /* Chrome and Safari */
+  	height: 80vh;
+  	z-index: 1;
+  	width: 100%;
+  	margin-top: 0px;
+	background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 131, 0.8));
+}
+
+@keyframes colorchange {
+  0%   {background: #ce93d8;}
+  25%  {background: #f06292;}
+  50%  {background: #5c6bc0;}
+  75%  {background: #7e57c2;}
+  100% {background: #ffee58;}
+}
+
+#signUpLink {
+	font-size: 0.8em;
+}
+
+#signUpLink a {
+	color: #ce93d8;
+	text-decoration: none;
+}
+
+#signUpLink a:nth-child(1) {
+	float: left;
+}
+
+#signUpLink a:nth-child(2) {
+	float: right;
+}
+
