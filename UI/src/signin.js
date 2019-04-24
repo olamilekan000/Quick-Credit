@@ -1,3 +1,8 @@
-require('../styles/index.css');
+import'../styles/index.css';
+import './validation.js'
 
-alert('Signin page')
+const signInButton = document.querySelector('button#Sign-In')
+
+signInButton.addEventListener('click', (event) => {
+	event.preventDefault()
+})
