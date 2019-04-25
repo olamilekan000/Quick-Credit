@@ -1,10 +1,14 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 html, body {
 	height: 100vh;
 }
 
 body{
-	margin: 0px;
-	padding: 0px;
 	font-family: 'Roboto', sans-serif;
 	background-color: #fff;
 	display: block;
@@ -12,7 +16,6 @@ body{
 
 header, footer{
 	background-color: #141D26;
-	margin: 0px;
 }
 
 header{
@@ -27,14 +30,15 @@ header .container{
 
 footer{
 	margin-bottom: 0px;
-	min-height: 0px;
-	padding: 20px;
+	min-height: 5em;
+	padding: 10px;
 }
 
 footer > h6 {
 	text-align: center;
 	color: #fff;
 	font-size: 0.8em;
+	margin-top: 2%;
 }
 
 main{
@@ -55,6 +59,11 @@ form{
 
 form div.center {
 	text-align: center;
+}
+
+form > select {
+	margin-top: 20px;
+	padding: 5px;
 }
 
 ul li{
@@ -86,6 +95,11 @@ span a{
 .center button {
 	margin-top: 15px;
 	width: 50%;
+}
+
+.center a {
+	color: #ce93d8;
+	text-decoration: none;
 }
 
 .input-field{
@@ -124,6 +138,8 @@ span a{
 }
 
 .input-field[type=email]:focus,
+.input-field[type=text]:focus,
+.input-field[type=number]:focus,
 .input-field[type=password]:focus {
 	border: none;
 	outline: none;
@@ -151,15 +167,23 @@ span a{
 
 /*id*/
 
-#signInText {
+#signInText,
+#signUpText {
 	text-align: center;
 	font-family: 'Pacifico', cursive;
-	margin-top: 3%;
 	color: #fff;
-	font-size: 1.9em;
+	margin-top: 3%;
+	font-size: 2em;
 }
 
-#errEmail, #errPwd, #errPwd2 {
+#signUpForm {
+	margin-bottom: 5em;
+}
+
+#errEmail, 
+#errPwd, 
+#errPwd2,
+#errPhoneNum {
 	color: red;
 	display: none;
 	transition: all 1s ease-in;
@@ -167,14 +191,14 @@ span a{
 }
 
 #formBackground {
-  	animation: colorchange 50s infinite; /* animation-name followed by duration in seconds*/
-     /* you could also use milliseconds (ms) or something like 2.5s */
-  	-webkit-animation: colorchange 50s infinite; /* Chrome and Safari */
-  	height: 80vh;
+  	animation: colorchange 50s infinite; 
+  	-webkit-animation: colorchange 50s infinite;
+  	min-height: 85vh;
   	z-index: 1;
   	width: 100%;
   	margin-top: 0px;
 	background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 131, 0.8));
+	background-size: cover;
 }
 
 @keyframes colorchange {
@@ -182,7 +206,7 @@ span a{
   25%  {background: #f06292;}
   50%  {background: #5c6bc0;}
   75%  {background: #7e57c2;}
-  100% {background: #ffee58;}
+  100% {background: #222831;}
 }
 
 #signUpLink {

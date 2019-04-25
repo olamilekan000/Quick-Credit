@@ -5,6 +5,7 @@ module.exports = {
     index: './src/index.js',
     signin: './src/signin.js',
     resetpwd: './src/reset-pwd.js',
+    signup: './src/signup.js',
   },
   module: {
     rules: [
@@ -46,6 +47,12 @@ module.exports = {
       inject: true,
       chunks: ['resetpwd'],
       filename: 'reset-pwd.html'
-    }),        
+    }),
+    new HtmlWebpackPlugin({
+      template: './client/signup.html',
+      inject: true,
+      chunks: ['signup'],
+      filename: 'signup.html'
+    }),          
   ]
 };

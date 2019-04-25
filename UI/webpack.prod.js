@@ -17,6 +17,7 @@ module.exports = {
     index: './src/index.js',
     signin: './src/signin.js',
     resetpwd: './src/reset-pwd.js',
+    signup: './src/signup.js',
   },
 
   // how to write the compiled files to disk
@@ -67,7 +68,13 @@ module.exports = {
       inject: true,
       chunks: ['resetpwd'],
       filename: 'reset-pwd.html'
-    }),   
+    }),
+    new HtmlWebpackPlugin({
+      template: './client/signup.html',
+      inject: true,
+      chunks: ['signup'],
+      filename: 'signup.html'
+    }),       
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
       chunkFilename: "[id].[contenthash].css"

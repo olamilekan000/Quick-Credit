@@ -9,7 +9,7 @@
 	<meta name="viewport"
 	    content="width=device-width,user-scalable=0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
-<link href="signin.3cd185f0f4af5cfab22c.css" rel="stylesheet"></head>
+</head>
 <body>
 	<header>
 		<div class="container">
@@ -21,13 +21,25 @@
 	<main>
 		<div id="formBackground">
 			<div class="container">
-				<div id="signInForm">
-					<div id="signInText">
-						<h5>Sign-In</h5>
+				<div id="">
+					<div id="signUpText">
+						<h5>Sign Up</h5>
 					</div>
-					<div id="signInFormMarginTop">
+					<div id="signUpForm">
 						<div class="center">
 							<form>
+								<input 
+									type="text" 
+									placeholder="First name"
+									class="input-field"
+									required
+								>
+								<input 
+									type="text" 
+									placeholder="Last name"
+									class="input-field"
+									required
+								>																
 								<p id="errEmail">
 									Kindly type in an appropriate email address
 								</p>
@@ -50,24 +62,59 @@
 									class="input-field"
 									required
 								>
+								<input 
+									type="text"  
+									placeholder="Occupation"
+									class="input-field"
+									required
+								>
+								<input 
+									type="text" 
+									placeholder="Address"
+									class="input-field"
+									required
+								>
+								<p id="errPhoneNum">
+									invalid phone number format
+								</p>								
+								<input 
+									type="number" 
+									name="phoneNumber" 
+									placeholder="Phone number" 
+									id="validate" 
+									class="input-field"
+									required
+								>
+
+								<input 
+									type="number" 
+									placeholder="Age"
+									class="input-field"
+									required
+								>
+
+								<input 
+									type="text" 
+									placeholder="Nationality"
+									class="input-field"
+									required
+								>																											
+								<select required>
+									<option selected>Gender</option>
+									<option>Male</option>
+									<option>Female</option>
+								</select>							
 								<div class="center">
 									<button 
 										class="btn"
 										id="Sign-In"
-									>Sign-In
-									</button>
-								</div>
-								<div id="signUpLink">
+									>Sign Up
+									</button><br><br>
 									<a 
-										href="signup.html"
+										href="signin.html"
 									>
-										Register to begin getting credit.
-									</a>
-									<a 
-										href="reset-pwd.html"
-									>
-										Reset Password?
-									</a>	
+										Already have an account? click here to sign in
+									</a>									
 								</div>
 							</form>
 						</div>					
@@ -79,5 +126,5 @@
 	<footer>
 		<h6>quick-cash copyright &copy; 2019</h6>
 	</footer>
-<script type="text/javascript" src="signin.76889835f21c729bbfe3.js"></script></body>
+</body>
 </html>
