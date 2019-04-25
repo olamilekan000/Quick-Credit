@@ -335,11 +335,28 @@ span a{
 	display: flex;
 }
 
-#p-application {
+.pending-acions{
+	margin-top: 3em;
+	padding-top: 3%;
+
+}
+
+.pending-acions > button{
+	width: 20%;
+	margin-top: 1em;
+}
+
+#p-application,
+.p-application {
 	display: flex;
 	justify-content: space-between;
 }
 
 #verif-user {
 	width: 60%;
+}
+
+#img > img {
+	width: 12em;
+	border-radius: 50%;
 }
