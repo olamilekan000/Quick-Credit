@@ -1,15 +1,20 @@
 import regexPatterns from './regex.js';
 
 const validateFields = (inputField, regexPattern) => {
+	let validateEmail = document.getElementById('errEmail')
+	let validatePwd = document.getElementById('errPwd')
+	let validatePhonenumber = document.getElementById('errPhoneNum')
+
 	if (regexPattern.test(inputField.value)) {
 		switch (inputField.name) {
 			case 'email':
-				let validateEmail = document.getElementById('errEmail')
 				validateEmail.style.display = 'none'
 				break;
 			case 'password':
-				let validatePwd = document.getElementById('errPwd')
 				validatePwd.style.display = 'none'
+				break;
+			case 'phoneNumber':
+				validatePhonenumber.style.display = 'none'
 				break;					
 			default:
 				// statements_def
@@ -18,13 +23,14 @@ const validateFields = (inputField, regexPattern) => {
 	}else {
 		switch (inputField.name) {
 			case 'email':
-				let validateEmail = document.getElementById('errEmail')
 				validateEmail.style.display = 'block'
 				break;
 			case 'password':
-				let validatePwd = document.getElementById('errPwd')
 				validatePwd.style.display = 'block'
-				break;				
+				break;
+			case 'phoneNumber':
+				validatePhonenumber.style.display = 'block'
+				break;									
 			default:
 				// statements_def
 				break;
