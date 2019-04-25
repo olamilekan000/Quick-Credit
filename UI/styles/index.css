@@ -10,22 +10,66 @@ html, body {
 
 body{
 	font-family: 'Roboto', sans-serif;
-	background-color: #fff;
+	background-color: #f4f4f4;
 	display: block;
 }
 
-header, footer{
+header, 
+footer,
+nav{
 	background-color: #141D26;
 }
 
-header{
-	margin: 0px;
+header, nav{
 	min-height: 10vh;
 }
 
 header .container{
 	display: flex;
 	justify-content: space-between;
+}
+
+nav > .container > div#logo {
+	float: left;
+}
+
+nav > .container > ul {
+	float: right;
+}
+
+nav > .container {
+	padding: 0px;
+}
+
+
+nav > .container > ul > li > a{
+	text-decoration: none;
+	color: #fff;
+}
+
+nav > .container > ul > li{
+	text-align: center;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	height: 10vh;
+	line-height: 60px;
+	padding: 5px;
+	color: #fff;
+}
+
+nav > .container > ul > li > a:hover{
+	height: 10vh;
+	color: red;
+}
+
+nav > .container > ul > li:hover{
+	background-color: #f4f4f4;
+	color: red;
+}
+
+nav > .container > ul{
+	height: 10vh;
+	list-style: none;
 }
 
 footer{
@@ -164,6 +208,41 @@ span a{
 	color: #fff;
 }
 
+.dashboard {
+	min-height: 100vh;
+	margin-top: 5%;
+}
+
+.dashboard > div#profile {
+	float: left;
+}
+
+.dashboard > div.activities {
+	float: right;
+}
+
+.title h5 {
+	text-align: center;
+	font-size: 2rem;
+	padding: 5px;
+}
+
+.repaymentStory{
+	width: 50%;
+	margin: auto;
+	display: flex;
+	padding: 10px;
+	justify-content: space-between;	
+}
+
+.repaymentText {
+	padding: 10px;
+}
+
+.repaymentText > div{
+	float: right;
+}
+
 
 /*id*/
 
@@ -226,3 +305,7 @@ span a{
 	float: right;
 }
 
+#hr {
+	background-color: #141D26;
+	color: #141D26;
+}
