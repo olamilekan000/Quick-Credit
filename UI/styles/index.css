@@ -243,6 +243,20 @@ span a{
 	float: right;
 }
 
+.pending-applications .card .p-application{
+	width: 100%;
+	padding: 0px;
+}
+
+.pending-applications{
+	width: 70%;
+	margin: auto;
+	margin-bottom: 50px;
+}
+
+.pending-applications div{
+	margin: 10px;
+}
 
 /*id*/
 
@@ -308,4 +322,24 @@ span a{
 #hr {
 	background-color: #141D26;
 	color: #141D26;
+}
+
+#pending-acions button{
+	width: 100%;
+	margin-right: 10px;
+}
+
+#pending-acions {
+	width: 30%;
+	justify-content: space-between;
+	display: flex;
+}
+
+#p-application {
+	display: flex;
+	justify-content: space-between;
+}
+
+#verif-user {
+	width: 60%;
 }

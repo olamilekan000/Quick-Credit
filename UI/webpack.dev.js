@@ -7,7 +7,8 @@ module.exports = {
     resetpwd: './src/reset-pwd.js',
     signup: './src/signup.js',
     dashboard: './src/dashboard.js',
-    applyForLoan: './src/apply-for-loan.js'
+    applyForLoan: './src/apply-for-loan.js',
+    verifyUser: './src/verify-user.js',
   },
   module: {
     rules: [
@@ -67,6 +68,12 @@ module.exports = {
       inject: true,
       chunks: ['applyForLoan'],
       filename: 'apply-for-loan.html'
-    }),                  
+    }),
+    new HtmlWebpackPlugin({
+      template: './client/verify-user.html',
+      inject: true,
+      chunks: ['verifyUser'],
+      filename: 'verify-user.html'
+    }),                       
   ]
 };
