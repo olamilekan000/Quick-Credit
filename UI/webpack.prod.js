@@ -15,7 +15,8 @@ module.exports = {
   // https://webpack.js.org/concepts/entry-points/#multi-page-application
   entry: {
     index: './src/index.js',
-    signin: './src/signin.js'
+    signin: './src/signin.js',
+    resetpwd: './src/reset-pwd.js',
   },
 
   // how to write the compiled files to disk
@@ -61,6 +62,12 @@ module.exports = {
       chunks: ['signin'],
       filename: 'signin.html'
     }),
+    new HtmlWebpackPlugin({
+      template: './client/reset-pwd.html',
+      inject: true,
+      chunks: ['resetpwd'],
+      filename: 'reset-pwd.html'
+    }),   
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
       chunkFilename: "[id].[contenthash].css"

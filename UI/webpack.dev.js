@@ -3,7 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     index: './src/index.js',
-    signin: './src/signin.js'
+    signin: './src/signin.js',
+    resetpwd: './src/reset-pwd.js',
   },
   module: {
     rules: [
@@ -39,6 +40,12 @@ module.exports = {
       inject: true,
       chunks: ['signin'],
       filename: 'signin.html'
-    }),    
+    }),
+    new HtmlWebpackPlugin({
+      template: './client/reset-pwd.html',
+      inject: true,
+      chunks: ['resetpwd'],
+      filename: 'reset-pwd.html'
+    }),        
   ]
 };

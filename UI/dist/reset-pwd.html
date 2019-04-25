@@ -9,7 +9,7 @@
 	<meta name="viewport"
 	    content="width=device-width,user-scalable=0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
-</head>
+<link href="resetpwd.c998a87aab201c0dc4c6.css" rel="stylesheet"></head>
 <body>
 	<header>
 		<div class="container">
@@ -23,22 +23,11 @@
 			<div class="container">
 				<div id="signInForm">
 					<div id="signInText">
-						<h5>Sign-In</h5>
+						<h5>Reset Password</h5>
 					</div>
 					<div id="signInFormMarginTop">
 						<div class="center">
-							<form>
-								<p id="errEmail">
-									Kindly type in an appropriate email address
-								</p>
-								<input 
-									type="email" 
-									name="email" 
-									placeholder="E-mail" 
-									class="input-field"
-									id="validate" 
-									required
-								>
+							<form>					
 								<p id="errPwd">
 									Password should be at least 6 characters long and shouldn't include any of "@ or _"
 								</p>
@@ -46,28 +35,27 @@
 									type="password" 
 									name="password" 
 									placeholder="Password" 
-									id="validate" 
+									id="validate input-field-pwd1" 
 									class="input-field"
 									required
 								>
+								<p id="errPwd2">
+									Password is not the same
+								</p>
+								<input 
+									type="password" 
+									name="password" 
+									placeholder="Password" 
+									id="input-field-pwd2" 
+									class="input-field"
+									required
+								>								
 								<div class="center">
 									<button 
 										class="btn"
 										id="Sign-In"
-									>Sign-In
+									>Reset Password
 									</button>
-								</div>
-								<div id="signUpLink">
-									<a 
-										href="signup.html"
-									>
-										Register to begin getting credit.
-									</a>
-									<a 
-										href="reset-pwd.html"
-									>
-										Reset Password?
-									</a>	
 								</div>
 							</form>
 						</div>					
@@ -79,5 +67,5 @@
 	<footer>
 		<h6>quick-cash copyright &copy; 2019</h6>
 	</footer>
-</body>
+<script type="text/javascript" src="resetpwd.0ee1620f21945faaa991.js"></script></body>
 </html>
