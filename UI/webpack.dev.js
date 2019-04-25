@@ -12,6 +12,7 @@ module.exports = {
     loanProfile: './src/loan-profile.js',
     loanApplication: './src/loan-application.js',
     loanNfp: './src/loans-nfp.js',
+    loanFp: './src/loans-fp.js',
   },
   module: {
     rules: [
@@ -95,6 +96,12 @@ module.exports = {
       inject: true,
       chunks: ['loanNfp'],
       filename: 'loans-nfp.html'
-    }),                                
+    }),
+    new HtmlWebpackPlugin({
+      template: './client/loans-fp.html',
+      inject: true,
+      chunks: ['loanFp'],
+      filename: 'loans-fp.html'
+    }),                                      
   ]
 };
