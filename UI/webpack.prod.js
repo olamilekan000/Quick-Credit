@@ -19,6 +19,7 @@ module.exports = {
     resetpwd: './src/reset-pwd.js',
     signup: './src/signup.js',
     dashboard: './src/dashboard.js',
+    applyForLoan: './src/apply-for-loan.js',
   },
 
   // how to write the compiled files to disk
@@ -81,6 +82,12 @@ module.exports = {
       inject: true,
       chunks: ['dashboard'],
       filename: 'dashboard.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './client/apply-for-loan.html',
+      inject: true,
+      chunks: ['applyForLoan'],
+      filename: 'apply-for-loan.html'
     }),           
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
