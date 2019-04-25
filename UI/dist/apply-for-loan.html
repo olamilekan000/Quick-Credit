@@ -9,53 +9,61 @@
 	<meta name="viewport"
 	    content="width=device-width,user-scalable=0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
-<link href="resetpwd.89d623d8dfdbd908819c.css" rel="stylesheet"></head>
+<link href="applyForLoan.89d623d8dfdbd908819c.css" rel="stylesheet"></head>
 <body>
-	<header>
+	<nav>
 		<div class="container">
 			<div id="logo">
 				<span class="logo">Quick-Credit</span>
 			</div>
-		</div>
-	</header>
+			<ul>
+				<li><a href="dashboard.html">Dashboard</a></li>
+				<li><a href="apply-for-loan.html">Apply for a Loan</a></li>
+			</ul>
+		</div>			
+	</nav>
 	<main>
 		<div id="formBackground">
 			<div class="container">
-				<div id="signInForm">
-					<div id="signInText">
-						<h5>Reset Password</h5>
+				<div id="">
+					<div id="signUpText">
+						<h5>Apply for a Quick Cash!</h5>
 					</div>
-					<div id="signInFormMarginTop">
+					<div id="signUpForm">
 						<div class="center">
-							<form>					
-								<p id="errPwd">
-									Password should be at least 6 characters long and shouldn't include any of "@ or _"
-								</p>
+							<form>
 								<input 
-									type="password" 
-									name="password" 
-									placeholder="Enter new password" 
-									id="validate input-field-pwd1" 
-									class="input-field"
-									required
-								>
-								<p id="errPwd2">
-									Password is not the same
-								</p>
-								<input 
-									type="password" 
-									name="password" 
-									placeholder="Confirm new password" 
-									id="input-field-pwd2" 
+									type="number" 
+									placeholder="Amount"
 									class="input-field"
 									required
 								>								
+
+								<input 
+									type="text" 
+									placeholder="Description"
+									class="input-field"
+									required
+								>
+
+								<input 
+									type="number" 
+									placeholder="Duration"
+									class="input-field"
+									required
+								>																														
+								<select required>
+									<option selected>Repayment Duration</option>
+									<option>Monthly</option>
+									<option>Annually</option>
+									<option>Semi-Annually</option>
+								</select>							
 								<div class="center">
 									<button 
 										class="btn"
 										id="Sign-In"
-									>Reset Password
-									</button>
+									>Apply
+									</button><br><br>									
 								</div>
 							</form>
 						</div>					
@@ -67,5 +75,5 @@
 	<footer>
 		<h6>quick-cash copyright &copy; 2019</h6>
 	</footer>
-<script type="text/javascript" src="resetpwd.5b49dd5977825576843d.js"></script></body>
+<script type="text/javascript" src="applyForLoan.5b49dd5977825576843d.js"></script></body>
 </html>
