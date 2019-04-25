@@ -9,6 +9,7 @@ module.exports = {
     dashboard: './src/dashboard.js',
     applyForLoan: './src/apply-for-loan.js',
     verifyUser: './src/verify-user.js',
+    loanProfile: './src/loan-profile.js',
     loanApplication: './src/loan-application.js',
   },
   module: {
@@ -81,6 +82,12 @@ module.exports = {
       inject: true,
       chunks: ['loanApplication'],
       filename: 'loan-application.html'
-    }),                           
+    }),
+    new HtmlWebpackPlugin({
+      template: './client/loan-profile.html',
+      inject: true,
+      chunks: ['loanProfile'],
+      filename: 'loan-profile.html'
+    }),                             
   ]
 };

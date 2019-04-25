@@ -22,6 +22,7 @@ module.exports = {
     applyForLoan: './src/apply-for-loan.js',
     verifyUser: './src/verify-user.js',
     loanApplication: './src/loan-application.js',
+    loanProfile: './src/loan-profile.js',
   },
 
   // how to write the compiled files to disk
@@ -102,7 +103,13 @@ module.exports = {
       inject: true,
       chunks: ['loanApplication'],
       filename: 'loan-application.html'
-    }),                   
+    }),
+    new HtmlWebpackPlugin({
+      template: './client/loan-profile.html',
+      inject: true,
+      chunks: ['loanProfile'],
+      filename: 'loan-profile.html'
+    }),                       
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
       chunkFilename: "[id].[contenthash].css"
