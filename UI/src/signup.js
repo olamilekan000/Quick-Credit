@@ -1,2 +1,2 @@
 import'../styles/index.css';
-import './validation.js'
+import './validation.js';

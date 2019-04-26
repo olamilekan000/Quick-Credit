@@ -1,3 +1,4 @@
-require('../styles/index.css');
-
-alert('Index.html')
+import '../styles/index.css';
+import './validation.js';
+import './signin.js';
+ 
