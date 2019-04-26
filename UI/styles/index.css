@@ -378,8 +378,9 @@ span a{
 }
 
 #signUpLink a {
-	color: #ce93d8;
+	color: #141D26;
 	text-decoration: none;
+	font-weight: bold;
 }
 
 #signUpLink a:nth-child(1) {
@@ -434,4 +435,16 @@ span a{
 
 #loanProfile {
 	height: 90vh;
+}
+
+#nav-buttons {
+	float: right;
+	display: flex;
+	justify-content: space-between;
+	width: 50%;
+	margin-bottom: 5em;
+}
+
+#nav-buttons button{
+	width: 30%;
 }
