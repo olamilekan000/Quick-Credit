@@ -25,6 +25,7 @@ module.exports = {
     loanProfile: './src/loan-profile.js',
     loanNfp: './src/loans-nfp.js',
     loanFp: './src/loans-fp.js',
+    postRepayment: './src/post-repayment.js',
   },
 
   // how to write the compiled files to disk
@@ -123,7 +124,13 @@ module.exports = {
       inject: true,
       chunks: ['loanFp'],
       filename: 'loans-fp.html'
-    }),                               
+    }),
+    new HtmlWebpackPlugin({
+      template: './client/post-repayment.html',
+      inject: true,
+      chunks: ['postRepayment'],
+      filename: 'post-repayment.html'
+    }),                                  
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
       chunkFilename: "[id].[contenthash].css"

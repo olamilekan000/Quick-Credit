@@ -13,6 +13,7 @@ module.exports = {
     loanApplication: './src/loan-application.js',
     loanNfp: './src/loans-nfp.js',
     loanFp: './src/loans-fp.js',
+    postRepayment: './src/post-repayment.js',
   },
   module: {
     rules: [
@@ -102,6 +103,12 @@ module.exports = {
       inject: true,
       chunks: ['loanFp'],
       filename: 'loans-fp.html'
-    }),                                      
+    }),
+    new HtmlWebpackPlugin({
+      template: './client/post-repayment.html',
+      inject: true,
+      chunks: ['postRepayment'],
+      filename: 'post-repayment.html'
+    }),                                          
   ]
 };
