@@ -1,0 +1,51 @@
+{
+  "name": "Quick-Credit",
+  "version": "1.0.0",
+  "description": "Quick Credit is an online lending platform that provides short term soft loans to individuals. This helps solve problems of financial inclusion as a way to alleviate poverty and empower low income earners.",
+  "main": "index.js",
+  "scripts": {
+    "nyc": "nyc --reporter=html --reporter=text mocha --timeout 60000 --require @babel/register --require @babel/polyfill test/*.js --exit",
+    "test:dev": "SET NODE_ENV=test&& npm run nyc",
+    "test": "NODE_ENV=test&& npm run nyc",
+    "dev": "nodemon --exec babel-node app.js",
+    "start": "babel-node app.js",
+    "prod": "pm2-runtime start ecosystem.config.js --env production",
+    "preinstall": "npm install pm2 babel -g",
+    "lint": "eslint --fix app.js ./server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olamilekan000/Quick-Credit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olamilekan000/Quick-Credit/issues"
+  },
+  "homepage": "https://github.com/olamilekan000/Quick-Credit#readme",
+  "dependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.2.2",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/register": "^7.4.0",
+    "app-root-path": "^2.2.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "morgan": "^1.9.1",
+    "pm2": "^3.5.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "mocha": "^6.1.4",
+    "nyc": "^14.0.0"
+  }
+}
