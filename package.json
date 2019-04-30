@@ -10,7 +10,7 @@
     "dev": "nodemon --exec babel-node app.js",
     "start": "babel-node app.js",
     "prod": "pm2-runtime start ecosystem.config.js --env production",
-    "preinstall": "npm install pm2 babel-node -g",
+    "preinstall": "npm install pm2 babel-cli -g",
     "lint": "eslint --fix app.js ./server",
     "coverage": "nyc report --reporter=text-lcov | coveralls"  
   },
