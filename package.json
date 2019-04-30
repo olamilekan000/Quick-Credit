@@ -11,7 +11,8 @@
     "start": "babel-node app.js",
     "prod": "pm2-runtime start ecosystem.config.js --env production",
     "preinstall": "npm install pm2 babel -g",
-    "lint": "eslint --fix app.js ./server"
+    "lint": "eslint --fix app.js ./server",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"  
   },
   "repository": {
     "type": "git",
@@ -31,10 +32,13 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/register": "^7.4.0",
     "app-root-path": "^2.2.1",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "helmet": "^3.16.0",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pm2": "^3.5.0",
     "winston": "^3.2.1"
