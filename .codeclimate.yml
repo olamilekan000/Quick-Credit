@@ -1,0 +1,14 @@
+exclude_paths:
+  - "node_modules"
+  - "UI"
+  - ".nyc_output"
+  - "coverage"
+checks:
+  return-statements:
+    enabled: false
+  similar-code:
+    enabled: false
+  identical-code:
+    enabled: false
+  file-lines:
+    enabled: false

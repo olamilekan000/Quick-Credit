@@ -1,58 +1,103 @@
 import { hashPwd } from '../helpers/hashpwd';
 import jwt from '../helpers/token';
-import { signInData } from '../mock-data';
+import { signUpData } from '../mock-data';
 
 export default class User {
   static async signUp(req, res, next) {
-    req.body.id = Math.random();
-    const {
-      email, role, id, password,
-    } = req.body;
+    try {
+      req.body.id = Math.random();
+      req.body.isVerified = false;
 
-    await hashPwd(password);
+      if (!req.body.role) {
+        req.body.role = 'User';
+      }
 
-    req.body.token = jwt.signUser(email, role, id);
-    const resData = Object.keys(req.body);
+      const {
+        email, role, id, password,
+      } = req.body;
 
-    return res.status(200).json({
-      data: resData
-        .filter(data => data !== 'password')
-        .reduce((acc, key) => {
-          acc[key] = req.body[key];
-          return acc;
-        }, {}),
-    });
+      const pwd = await hashPwd(password);
 
-    next();
+      req.body.password = pwd;
+      req.body.token = jwt.signUser(email, role, id);
+      const resData = Object.keys(req.body);
+
+      return res.status(200).json({
+        data: resData
+          .filter(data => data !== 'password')
+          .reduce((acc, key) => {
+            acc[key] = req.body[key];
+            return acc;
+          }, {}),
+      });
+    } catch (err) {
+      next(err);
+    }
   }
 
   static async signIn(req, res, next) {
-    const signedInUser = signInData.find(data => data.email === req.body.email && data.password === req.body.password);
+    try {
+      const signedInUser = signUpData.find(
+        data => data.email === req.body.email && data.password === req.body.password,
+      );
 
-    if (!signedInUser) {
-      return res.status(404).json({
-        error: 'Not found',
-        message: 'User not found',
+      if (!signedInUser) {
+        return res.status(404).json({
+          error: 'Not found',
+          message: 'User not found',
+        });
+      }
+
+      const {
+        email, role, id,
+      } = signedInUser;
+
+      signedInUser.token = jwt.signUser(email, role, id);
+
+      const getFields = Object.keys(signedInUser);
+
+      return res.status(200).json({
+        data: getFields
+          .filter(data => data !== 'password')
+          .reduce((acc, key) => {
+            acc[key] = signedInUser[key];
+            return acc;
+          }, {}),
       });
+    } catch (err) {
+      next(err);
     }
+  }
 
-    const {
-      email, role, id,
-    } = signedInUser;
+  static async verifyUser(req, res, next) {
+    try {
+      const { email } = req.params;
 
-    signedInUser.token = jwt.signUser(email, role, id);
+      const getUser = signUpData.find(
+        data => data.email === email,
+      );
 
-    const getFields = Object.keys(signedInUser);
+      if (!getUser) {
+        return res.status(404).json({
+          error: 'Not found',
+          message: 'User not found',
+        });
+      }
 
-    return res.status(200).json({
-      data: getFields
-        .filter(data => data !== 'password')
-        .reduce((acc, key) => {
-          acc[key] = signedInUser[key];
-          return acc;
-        }, {}),
-    });
+      getUser.isVerified = true;
 
-    next();
+      const getFields = Object.keys(getUser);
+
+      return res.status(200).json({
+        data: getFields
+          .filter(data => data !== 'password')
+          .reduce((acc, key) => {
+            acc[key] = getUser[key];
+            return acc;
+          }, {}),
+      });
+    } catch (err) {
+      next(err);
+    }
   }
 }
