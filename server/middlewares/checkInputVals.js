@@ -8,7 +8,7 @@ const checkVals = (req, res, next) => {
     return acc;
   }, []);
 
-  for (let i = 0; i < keys.length; i++) {
+  for (let i = 0; i < keys.length; i += 1) {
     if (!regex[keys[i]].test(keyValues[i])) {
       return res.status(400).json({
         error: 'Bad request',

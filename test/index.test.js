@@ -1,6 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app.js';
+import PORT from '../server/config/port';
 
 import {
   signUpGood,
@@ -8,6 +9,7 @@ import {
   signInGood,
   signInNoUser,
   signInBadRequest,
+  signUpAdmin
 } from './test.data';
 
 chai.use(chaiHttp);
@@ -19,8 +21,10 @@ const { expect } = chai;
 
 let Token = '';
 let signinToken = '';
+let adminToken = '';
 
 describe('Application test', () => {
+
   describe('Authorization of users', () => {
     it('Registers a user with the right set of data', (done) => {
       chai.request(app)
@@ -42,6 +46,8 @@ describe('Application test', () => {
           should.exist(res.body.data.gender);
           should.exist(res.body.data.id);
           should.exist(res.body.data.token);
+          should.exist(res.body.data.isVerified);
+          should.exist(res.body.data.role);
           res.body.data.firstName.should.eql('Zabuza');
           res.body.data.lastName.should.eql('Momochi');
           res.body.data.email.should.eql('Momochi@gmail.com');
@@ -52,9 +58,11 @@ describe('Application test', () => {
           res.body.data.nationality.should.eql('Japanese');
           res.body.data.gender.should.eql('male');
           res.body.data.token.should.eql(Token);
+          res.body.data.isVerified.should.eql(false);
+          res.body.data.role.should.eql('User');
           done();
         });
-    });
+    });    
 
     it('try to egister a user with a bad set of data', (done) => {
       chai.request(app)
@@ -72,6 +80,46 @@ describe('Application test', () => {
         });
     });
   });
+
+  describe('Admin signup', () => {
+    it('Registers an Admin', (done) => {
+      chai.request(app)
+        .post(`${BASE_URI}/auth/signup`)
+        .set('content-type', 'application/json')
+        .send(signUpAdmin)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.type.should.eql('application/json');
+        	adminToken = res.body.data.token;
+          should.exist(res.body.data.firstName);
+          should.exist(res.body.data.lastName);
+          should.exist(res.body.data.email);
+          should.exist(res.body.data.occupation);
+          should.exist(res.body.data.address);
+          should.exist(res.body.data.phoneNumber);
+          should.exist(res.body.data.age);
+          should.exist(res.body.data.nationality);
+          should.exist(res.body.data.gender);
+          should.exist(res.body.data.id);
+          should.exist(res.body.data.token);
+          should.exist(res.body.data.isVerified);
+          should.exist(res.body.data.role);
+          res.body.data.firstName.should.eql('Kaguya');
+          res.body.data.lastName.should.eql('Otsusuki');
+          res.body.data.email.should.eql('kaguya@gmail.com');
+          res.body.data.occupation.should.eql('Mother Ninja');
+          res.body.data.address.should.eql('Sealed in the moon');
+          res.body.data.phoneNumber.should.eql('08077998844');
+          res.body.data.age.should.eql(99);
+          res.body.data.nationality.should.eql('Japanese');
+          res.body.data.gender.should.eql('female');
+          res.body.data.token.should.eql(adminToken);
+          res.body.data.isVerified.should.eql(false);
+          res.body.data.role.should.eql('Admin');
+          done();
+        });
+    });  	
+  })
 
   describe('Signing In a user', () => {
     it('signs in a user with a good data', (done) => {
@@ -156,4 +204,80 @@ describe('Application test', () => {
         });
     });
   });
+
+  describe('Checks the port', () => {	
+    it('checks if the port is at 9001', (done) => {
+    	expect(PORT).to.equal(9001)
+    	done()
+    });
+  });
+
+  describe('Verify a user', () => {
+    it('It checks and verifies a user', (done) => {
+      chai.request(app)
+        .patch(`${BASE_URI}/users/${signUpAdmin.email}/verify`)
+        .set('content-type', 'application/json')
+        .set('Authorization', adminToken)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.type.should.eql('application/json');
+          should.exist(res.body.data.firstName);
+          should.exist(res.body.data.lastName);
+          should.exist(res.body.data.email);
+          should.exist(res.body.data.occupation);
+          should.exist(res.body.data.address);
+          should.exist(res.body.data.phoneNumber);
+          should.exist(res.body.data.age);
+          should.exist(res.body.data.nationality);
+          should.exist(res.body.data.gender);
+          should.exist(res.body.data.id);
+          should.exist(res.body.data.isVerified);
+          should.exist(res.body.data.role);
+          res.body.data.firstName.should.eql('Kaguya');
+          res.body.data.lastName.should.eql('Otsusuki');
+          res.body.data.email.should.eql('kaguya@gmail.com');
+          res.body.data.occupation.should.eql('Mother Ninja');
+          res.body.data.address.should.eql('Sealed in the moon');
+          res.body.data.phoneNumber.should.eql('08077998844');
+          res.body.data.age.should.eql(99);
+          res.body.data.nationality.should.eql('Japanese');
+          res.body.data.gender.should.eql('female');
+          res.body.data.isVerified.should.eql(true);
+          res.body.data.role.should.eql('Admin');
+          done();
+        });
+    });
+
+    it('trys to verify a user without any token', (done) => {
+      chai.request(app)
+        .patch(`${BASE_URI}/users/${signUpGood.email}/verify`)
+        .set('content-type', 'application/json')
+        .end((err, res) => {
+          res.should.have.status(500);
+          res.type.should.eql('application/json');
+          should.exist(res.body.error);
+          should.exist(res.body.message);
+          res.body.error.should.eql('Internal server error');
+          res.body.message.should.eql('Error resolving token');
+          done();
+        });
+    });
+
+    it('trys to verify a user without an admin token', (done) => {
+      chai.request(app)
+        .patch(`${BASE_URI}/users/${signUpGood.email}/verify`)
+        .set('content-type', 'application/json')
+        .set('Authorization', Token)
+        .end((err, res) => {
+          res.should.have.status(401);
+          res.type.should.eql('application/json');
+          should.exist(res.body.error);
+          should.exist(res.body.message);
+          res.body.error.should.eql('Authorization Error');
+          res.body.message.should.eql('You do not have the access to perform this action');
+          done();
+        });
+    });
+  });
+
 });

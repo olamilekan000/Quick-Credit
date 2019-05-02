@@ -11,6 +11,20 @@ const signUpGood = {
   gender: 'male',
 };
 
+const signUpAdmin = {
+  firstName: 'Kaguya',
+  lastName: 'Otsusuki',
+  email: 'kaguya@gmail.com',
+  password: 'infinitetsukoyumi',
+  occupation: 'Mother Ninja',
+  address: 'Sealed in the moon',
+  phoneNumber: '08077998844',
+  age: 99,
+  nationality: 'Japanese',
+  gender: 'female',
+  role: 'Admin'
+};
+
 const signUpBad = {
   firstName: 'Zabuza',
   lastName: 'Momochi',
@@ -45,4 +59,5 @@ export {
   signInGood,
   signInNoUser,
   signInBadRequest,
+  signUpAdmin
 };

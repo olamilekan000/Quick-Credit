@@ -10,6 +10,7 @@ const regex = {
   age: /^[\w]{2}$/,
   nationality: /^[a-zA-Z]+$/,
   gender: /^(male|female)$/,
+  role: /^[a-zA-Z]+$/,
 };
 
 export default regex;

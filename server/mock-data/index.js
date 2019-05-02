@@ -1,4 +1,4 @@
-const signInData = [
+const signUpData = [
   {
     firstName: 'Zabuza',
     lastName: 'Momochi',
@@ -10,7 +10,22 @@ const signInData = [
     age: 21,
     nationality: 'Japanese',
     gender: 'male',
+    role: 'User',
     id: 1,
+  },
+  {
+    firstName: 'Kaguya',
+    lastName: 'Otsusuki',
+    email: 'kaguya@gmail.com',
+    password: 'infinitetsukoyumi',
+    occupation: 'Mother Ninja',
+    address: 'Sealed in the moon',
+    phoneNumber: '08077998844',
+    age: 99,
+    nationality: 'Japanese',
+    gender: 'female',
+    role: 'Admin',
+    id: 2,
   },
 ];
 
@@ -28,6 +43,6 @@ const signUpBad = {
 };
 
 export {
-  signInData,
+  signUpData,
   signUpBad,
 };
