@@ -8,6 +8,8 @@ export default class User {
       req.body.id = Math.random();
       req.body.isVerified = false;
 
+      console.log(req.body.role)
+
       if (!req.body.role) {
         req.body.role = 'User';
       }

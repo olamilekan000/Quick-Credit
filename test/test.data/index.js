@@ -25,6 +25,20 @@ const signUpAdmin = {
   role: 'Admin'
 };
 
+const signUpUnauthorizedUser = {
+  firstName: 'Momoshiki',
+  lastName: 'Otsusuki',
+  email: 'momshiki@gmail.com',
+  password: 'karmar',
+  occupation: 'Rogue Ninja',
+  address: 'Sealed in the moon',
+  phoneNumber: '08077998844',
+  age: 40,
+  nationality: 'Japanese',
+  gender: 'male',
+  role: 'UnwantedUser'
+};
+
 const signUpBad = {
   firstName: 'Zabuza',
   lastName: 'Momochi',
@@ -59,5 +73,6 @@ export {
   signInGood,
   signInNoUser,
   signInBadRequest,
-  signUpAdmin
+  signUpAdmin,
+  signUpUnauthorizedUser
 };
