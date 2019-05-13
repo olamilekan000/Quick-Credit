@@ -14,9 +14,12 @@ router.route('/auth/signin')
   .post(checkVals, User.signIn);
 
 router.route('/users/:email/verify')
-  .patch(checkVals, User.verifyUser);
+  .patch(checkIfAdmin, checkVals, User.verifyUser);
 
 router.route('/loans')
   .post(checkIfUserOrAdmin, Loans.apply);
+
+router.route('/loans/:id')
+  .post(checkIfAdmin, Loans.approveOrReject);   
 
 export default router;

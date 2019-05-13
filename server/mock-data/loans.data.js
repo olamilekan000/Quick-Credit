@@ -1,6 +1,6 @@
 export const allLoans = [
 	{
-		id: 1,
+		id: '1',
 		user: 'Momochi@gmail.com',
 		createdOn: 'March 24th, 2018',
 		status: 'pending',
@@ -12,7 +12,7 @@ export const allLoans = [
 		interest: 0.20,
 	},
 	{
-		id: 2,
+		id: '2',
 		user: 'chid@gmail.com',
 		createdOn: 'March 24th, 2018',
 		status: 'pending',
