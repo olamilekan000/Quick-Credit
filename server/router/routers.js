@@ -20,6 +20,9 @@ router.route('/loans')
   .post(checkIfUserOrAdmin, Loans.apply);
 
 router.route('/loans/:id')
-  .post(checkIfAdmin, Loans.approveOrReject);   
+  .post(checkIfUserOrAdmin, Loans.approveOrReject);
+
+router.route('/loans/:id')
+  .get(checkIfUserOrAdmin, Loans.getALoan);     
 
 export default router;

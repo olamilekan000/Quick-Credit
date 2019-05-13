@@ -14,7 +14,7 @@ class Loans {
 		}
 	}
 
-	static async approveOrReject(req, res, next) {
+	static approveOrReject(req, res, next) {
 		try {
 			const {id} = req.params
 
@@ -30,6 +30,22 @@ class Loans {
 			next(err)
 		}
 	}
+
+	static getALoan(req, res, next) {
+		try {
+			const {id} = req.params
+
+			let aloan = allLoans.find(loan => {
+				return loan.id === id
+			})
+			
+			return res.status(200).json({
+				data: aloan
+			})				
+		} catch(err) {
+			next(err)
+		}		
+	} 
 }
 
 export default Loans
