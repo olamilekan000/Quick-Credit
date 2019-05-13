@@ -6,7 +6,7 @@ export const checkIfAdmin = (req, res, next) => {
     const verify = jwt.verify(tokenFromHeader, process.env.JWT_TOKEN_SECRET);
 
     if (verify.role !== 'Admin') {
-      res.status(401).json({
+      return res.status(401).json({
         error: 'Authorization Error',
         message: 'You do not have the access to perform this action',
       });
@@ -14,7 +14,7 @@ export const checkIfAdmin = (req, res, next) => {
     }
     next();
   } catch (e) {
-    res.status(500).json({
+    return res.status(500).json({
       error: 'Internal server error',
       message: 'Error resolving token',
     });
@@ -26,16 +26,18 @@ export const checkIfUserOrAdmin = (req, res, next) => {
     const tokenFromHeader = req.get('Authorization');
     const verify = jwt.verify(tokenFromHeader, process.env.JWT_TOKEN_SECRET);
 
-    if (verify.role === 'user' || verify.role === 'Admin') {
+    if (verify.role === 'User' || verify.role === 'Admin') {
       next();
     } else {
-      res.status(401).json({
-        error: 'You do not have the access to this resource.',
+      return res.status(401).json({
+        error: 'Unauthorized User',
+        message: 'You do not have the access to this resource.'
       });
     }
   } catch (e) {
-    res.status(500).json({
-      error: 'You do not have the access to perform this action',
+    return res.status(500).json({
+      error: 'Internal Server error',
+      message: 'It seems like you do not have the access to perform this action'
     });
   }
 };
