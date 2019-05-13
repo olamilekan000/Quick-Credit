@@ -1,7 +1,8 @@
+console.log('test start!')
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../app.js';
 import PORT from '../server/config/port';
+import app from '../app.js';
 
 import {
   signUpGood,
@@ -11,9 +12,12 @@ import {
   signInBadRequest,
   signUpAdmin,
   signUpUnauthorizedUser
-} from './test.data';
+} from './test.data/';
 
-import { applyForALoan } from './test.data/laon.test'
+import { 
+  applyForALoan,
+  allLoans
+} from './test.data/loan.test.js'
 
 chai.use(chaiHttp);
 
@@ -27,7 +31,6 @@ let signinToken = '';
 let adminToken = '';
 let badToken = '';
 
-console.log('test start!')
 
 describe('Application test', () => {
 
@@ -85,9 +88,7 @@ describe('Application test', () => {
           done();
         });
     });
-  });
 
-  describe('Admin signup', () => {
     it('Registers an Admin', (done) => {
       chai.request(app)
         .post(`${BASE_URI}/auth/signup`)
@@ -96,7 +97,7 @@ describe('Application test', () => {
         .end((err, res) => {
           res.should.have.status(200);
           res.type.should.eql('application/json');
-        	adminToken = res.body.data.token;
+          adminToken = res.body.data.token;
           should.exist(res.body.data.firstName);
           should.exist(res.body.data.lastName);
           should.exist(res.body.data.email);
@@ -162,8 +163,8 @@ describe('Application test', () => {
           res.body.data.role.should.eql('UnwantedUser');
           done();
         });
-    });     	
-  })
+    });    
+  });
 
   describe('Signing In a user', () => {
     it('signs in a user with a good data', (done) => {
@@ -346,7 +347,7 @@ describe('Application test', () => {
           should.exist(res.body.data.interest);
           res.body.data.id.should.eql(1);
           res.body.data.user.should.eql('Momochi@gmail.com');
-          res.body.data.createdOn.should.eql(new Date().toDateString());
+          res.body.data.createdOn.should.eql('new Date().toDateString()');
           res.body.data.status.should.eql('pending');
           res.body.data.repaid.should.eql(false);
           res.body.data.tenor.should.eql(2);

@@ -7,22 +7,12 @@ import jwt from 'jsonwebtoken';
 */
 export default class Jwt {
   static signUser(email, role, id) {
-    let userRole = ''
-
-    if (role === 'Admin') {
-      userRole = 'Admin'
-    }else if (role === 'User') {
-      userRole = 'User'
-    }else {
-      userRole = 'unauthorised'
-    }
-
     return jwt.sign({
       iss: process.env.ISSUER,
       sub: email,
       iat: new Date().getTime(),
       expiresIn: new Date().setDate(new Date().getDate() + 10),
-      role: userRole,
+      role: role === 'Admin'? 'Admin' : role === 'User' ? 'User' : 'Unauthorised',
       id,
     }, process.env.JWT_TOKEN_SECRET);
   }

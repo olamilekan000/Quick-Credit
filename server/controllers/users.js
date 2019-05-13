@@ -1,5 +1,5 @@
 import { hashPwd } from '../helpers/hashpwd';
-import jwt from '../helpers/token';
+import Jwt from '../helpers/token';
 import { signUpData } from '../mock-data';
 
 export default class User {
@@ -7,8 +7,6 @@ export default class User {
     try {
       req.body.id = Math.random();
       req.body.isVerified = false;
-
-      console.log(req.body.role)
 
       if (!req.body.role) {
         req.body.role = 'User';
@@ -21,7 +19,7 @@ export default class User {
       const pwd = await hashPwd(password);
 
       req.body.password = pwd;
-      req.body.token = jwt.signUser(email, role, id);
+      req.body.token = Jwt.signUser(email, role, id);
       const resData = Object.keys(req.body);
 
       return res.status(200).json({
@@ -33,6 +31,7 @@ export default class User {
           }, {}),
       });
     } catch (err) {
+      console.log(err)
       next(err);
     }
   }
@@ -54,7 +53,7 @@ export default class User {
         email, role, id,
       } = signedInUser;
 
-      signedInUser.token = jwt.signUser(email, role, id);
+      signedInUser.token = Jwt.signUser(email, role, id);
 
       const getFields = Object.keys(signedInUser);
 
@@ -67,6 +66,7 @@ export default class User {
           }, {}),
       });
     } catch (err) {
+      console.log(err)
       next(err);
     }
   }
@@ -99,6 +99,7 @@ export default class User {
           }, {}),
       });
     } catch (err) {
+      console.log(err)
       next(err);
     }
   }

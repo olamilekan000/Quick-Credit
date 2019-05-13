@@ -1,21 +1,27 @@
-import bcrypt from 'bcryptjs';
+import crypto from 'crypto'
+
+const salt = crypto.randomBytes(16).toString('hex');
 
 const hashPwd = async (pwd) => {
-  try {
-    const SALT_ROUNDS = 10;
-    const salt = await bcrypt.genSalt(SALT_ROUNDS);
-    return await bcrypt.hash(pwd, salt);
-  } catch (err) {
-    throw new Error(err);
-  }
+  return new Promise((resolve, reject) => {
+    crypto.pbkdf2(pwd, salt, 100000, 64, 'sha512', (err, derivedKey) => {
+      const key = derivedKey.toString('hex')
+      resolve(key)
+      if (err) reject(err)
+    });
+  })
 };
 
-const comparePwd = async (pwd, hshPwd) => {
-  try {
-    return await bcrypt.compare(pwd, hshPwd);
-  } catch (err) {
-    throw new Error(err);
-  }
+const comparePwd = async (pwd, hshedPwd) => {
+  return new Promise((resolve, reject) => {
+    try {
+      const hash = crypto.pbkdf2Sync(pwd, salt, 100000, 64, 'sha512').toString('hex');
+      resolve(hash === hshedPwd)
+    } catch (err) {
+      console.log(err)
+      throw new Error(err);
+    }
+  })
 };
 
 export { hashPwd, comparePwd };

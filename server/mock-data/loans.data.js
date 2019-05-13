@@ -2,7 +2,7 @@ export const allLoans = [
 	{
 		id: 1,
 		user: 'Momochi@gmail.com',
-		createdOn: new Date().toDateString(),
+		createdOn: 'March 24th, 2018',
 		status: 'pending',
 		repaid: false,
 		tenor: 2,
@@ -14,7 +14,7 @@ export const allLoans = [
 	{
 		id: 2,
 		user: 'chid@gmail.com',
-		createdOn: new Date().toDateString(),
+		createdOn: 'March 24th, 2018',
 		status: 'pending',
 		repaid: true,
 		tenor: 2,
