@@ -24,5 +24,7 @@ router.route('/loans/:id')
 	.get(checkIfUserOrAdmin, Loans.getALoan)
   .post(checkIfUserOrAdmin, Loans.approveOrReject);
   
+router.route('/loans/:loanId/repayment')
+  .post(checkIfAdmin, Loans.createLoanRepayment);
 
 export default router;

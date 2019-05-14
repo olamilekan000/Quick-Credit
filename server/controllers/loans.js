@@ -51,6 +51,25 @@ class Loans {
       next(err);
     }
   }
+
+  static createLoanRepayment(req, res, next) {
+    try {
+      const { loanId } = req.params
+
+      let findLoan = allLoans.find(loan => {
+        return loan.id === loanId
+      })
+
+      findLoan.repaymentId = Math.random()
+
+      return res.status(200).json({
+        data: findLoan,
+      });
+    } catch(err) {
+      next(err)
+    }
+  }
+
 }
 
 export default Loans;
