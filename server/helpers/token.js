@@ -12,7 +12,7 @@ export default class Jwt {
       sub: email,
       iat: new Date().getTime(),
       expiresIn: new Date().setDate(new Date().getDate() + 10),
-      role: role === 'Admin'? 'Admin' : role === 'User' ? 'User' : 'Unauthorised',
+      role: role === 'Admin' ? 'Admin' : role === 'User' ? 'User' : 'Unauthorised',
       id,
     }, process.env.JWT_TOKEN_SECRET);
   }

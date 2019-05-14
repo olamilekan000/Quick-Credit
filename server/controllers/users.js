@@ -31,7 +31,6 @@ export default class User {
           }, {}),
       });
     } catch (err) {
-      console.log(err)
       next(err);
     }
   }
@@ -66,7 +65,6 @@ export default class User {
           }, {}),
       });
     } catch (err) {
-      console.log(err)
       next(err);
     }
   }
@@ -99,7 +97,6 @@ export default class User {
           }, {}),
       });
     } catch (err) {
-      console.log(err)
       next(err);
     }
   }

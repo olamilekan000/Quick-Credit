@@ -11,7 +11,7 @@ const regex = {
   nationality: /^[a-zA-Z]+$/,
   gender: /^(male|female)$/,
   role: /^[a-zA-Z]+$/,
-  isVerified: /^(true|false)$/
+  isVerified: /^(true|false)$/,
 };
 
 export default regex;

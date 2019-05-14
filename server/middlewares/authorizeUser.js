@@ -10,7 +10,6 @@ export const checkIfAdmin = (req, res, next) => {
         error: 'Authorization Error',
         message: 'You do not have the access to perform this action',
       });
-      return;
     }
     next();
   } catch (e) {
@@ -31,13 +30,13 @@ export const checkIfUserOrAdmin = (req, res, next) => {
     } else {
       return res.status(401).json({
         error: 'Unauthorized User',
-        message: 'You do not have the access to this resource.'
+        message: 'You do not have the access to this resource.',
       });
     }
   } catch (e) {
     return res.status(500).json({
       error: 'Internal Server error',
-      message: 'It seems like you do not have the access to perform this action'
+      message: 'It seems like you do not have the access to perform this action',
     });
   }
 };

@@ -17,12 +17,15 @@ router.route('/users/:email/verify')
   .patch(checkIfAdmin, checkVals, User.verifyUser);
 
 router.route('/loans')
+	.get(checkIfUserOrAdmin, Loans.getAllLoans)
   .post(checkIfUserOrAdmin, Loans.apply);
 
 router.route('/loans/:id')
+	.get(checkIfUserOrAdmin, Loans.getALoan)
   .post(checkIfUserOrAdmin, Loans.approveOrReject);
-
-router.route('/loans/:id')
-  .get(checkIfUserOrAdmin, Loans.getALoan);     
+  
+router.route('/loans/:loanId/repayment')
+  .post(checkIfAdmin, Loans.createLoanRepayment)
+  .get(checkIfUserOrAdmin, Loans.viewLoanRepayment);
 
 export default router;
