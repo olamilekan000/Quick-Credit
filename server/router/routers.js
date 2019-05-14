@@ -25,6 +25,7 @@ router.route('/loans/:id')
   .post(checkIfUserOrAdmin, Loans.approveOrReject);
   
 router.route('/loans/:loanId/repayment')
-  .post(checkIfAdmin, Loans.createLoanRepayment);
+  .post(checkIfAdmin, Loans.createLoanRepayment)
+  .get(checkIfUserOrAdmin, Loans.viewLoanRepayment);
 
 export default router;
